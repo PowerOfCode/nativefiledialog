@@ -1,0 +1,57 @@
+language: cpp
+
+cache:
+  ccache: true
+
+matrix:
+  include:
+  - os: linux
+    addons:
+      apt:
+        packages:
+        - mingw-w64
+    sudo: required
+    cache:
+      ccache: false
+    script:
+    - wget https://launchpad.net/ubuntu/+archive/primary/+files/mingw-w64_5.0.2-2_all.deb
+    - wget https://launchpad.net/ubuntu/+archive/primary/+files/mingw-w64-x86-64-dev_5.0.2-2_all.deb
+    - wget https://launchpad.net/ubuntu/+archive/primary/+files/mingw-w64-tools_5.0.2-2_amd64.deb
+    - wget https://launchpad.net/ubuntu/+archive/primary/+files/mingw-w64-i686-dev_5.0.2-2_all.deb
+    - wget https://launchpad.net/ubuntu/+archive/primary/+files/mingw-w64-common_5.0.2-2_all.deb
+    - sudo dpkg -i *.deb
+    - ln -s /usr/x86_64-w64-mingw32/include/shobjidl.h $(pwd)/src/include/ShObjIdl.h
+    - cd ./build/gmake_windows
+    - CC=x86_64-w64-mingw32-gcc CXX=x86_64-w64-mingw32-g++ LDFLAGS="-L/usr/x86_64-w64-mingw32/lib
+      -lshell32 -fno-stack-protector -mwindows -lole32 -luuid" make config=release_x64
+      -j4
+    - cd ..
+    - mkdir -p deploy
+    - zip -r deploy/nfd-windows.zip lib
+    deploy:
+      file: $TRAVIS_BUILD_DIR/build/deploy/nfd-windows.zip
+      provider: releases
+      api_key:
+        secure: LkLYHmpO9kqPl27ZMnT2smBWhyV+ibvNnNKos6U7zuTv7dvvG0WuGw2pxaiXp4zpKZB5FU1mmlhHKu392MmPxM1gvTMqQW5NbOkd9dYax1cjhRxXMwOIG+1eol6gQnUwUzkLhiiEGzaiqs/VpPwEGgUtYNdBkpifWzYRRKlsV2KO+N43eq2uL1R6dAK8ghn+5Y7Y81ybk6Tp9Q879LmL4K7jdjPK8MZJPEtpY78UKVD3rqqLVM89+PzhpBXBSSHKMOeWNsDVu1JGg1PHe6tr0cES1lpQr6Q0eLqAJDyRskvcUMV8JxFG9ZUlD672u3alTGBExI4vNUVFAJbx86gqDbixbEt9epOQT/LJ0eHwIFMs2aZb3COIvLAQt8xe8hiSZ5aAFGAKduXQgNTMMQs48igJiN0lpRrthqryuvTYXSd/W2lqcaF5nkS4T2fMBj90L/zYxrTsrc5/ONVIfwpV7RhKTdcdILa4gQZOUGIQ3F/A8naFFr203LeUphqYAV+Z5itFll5jM5qLPSmLiYHNi8L0PmU+oV15NpdXLPnunJ9+zPkaQykTIL/52RLXpLuGtWHqPkOuIj3IXuDcnhM3j2uPWIh/yaG5IpSHh4bu/QhsvxjayPFZYkJ9aToA1Ma5Ehfq5nV8sTgZJZrbwHy+BrWJqehZAYNN57AGGMoDLFc=
+      skip_cleanup: true
+      on:
+        tags: true
+
+  - os: linux
+    addons:
+      apt:
+        packages:
+        - libgtk-3-dev
+    script:
+      - cd ./build/gmake_linux && LDFLAGS="-lgtk-3" make config=release_x64 -j4
+      - cd ..
+      - mkdir -p deploy
+      - zip -r deploy/nfd-linux.zip lib
+    deploy:
+      file: $TRAVIS_BUILD_DIR/build/deploy/nfd-linux.zip
+      provider: releases
+      api_key:
+        secure: LkLYHmpO9kqPl27ZMnT2smBWhyV+ibvNnNKos6U7zuTv7dvvG0WuGw2pxaiXp4zpKZB5FU1mmlhHKu392MmPxM1gvTMqQW5NbOkd9dYax1cjhRxXMwOIG+1eol6gQnUwUzkLhiiEGzaiqs/VpPwEGgUtYNdBkpifWzYRRKlsV2KO+N43eq2uL1R6dAK8ghn+5Y7Y81ybk6Tp9Q879LmL4K7jdjPK8MZJPEtpY78UKVD3rqqLVM89+PzhpBXBSSHKMOeWNsDVu1JGg1PHe6tr0cES1lpQr6Q0eLqAJDyRskvcUMV8JxFG9ZUlD672u3alTGBExI4vNUVFAJbx86gqDbixbEt9epOQT/LJ0eHwIFMs2aZb3COIvLAQt8xe8hiSZ5aAFGAKduXQgNTMMQs48igJiN0lpRrthqryuvTYXSd/W2lqcaF5nkS4T2fMBj90L/zYxrTsrc5/ONVIfwpV7RhKTdcdILa4gQZOUGIQ3F/A8naFFr203LeUphqYAV+Z5itFll5jM5qLPSmLiYHNi8L0PmU+oV15NpdXLPnunJ9+zPkaQykTIL/52RLXpLuGtWHqPkOuIj3IXuDcnhM3j2uPWIh/yaG5IpSHh4bu/QhsvxjayPFZYkJ9aToA1Ma5Ehfq5nV8sTgZJZrbwHy+BrWJqehZAYNN57AGGMoDLFc=
+      skip_cleanup: true
+      on:
+        tags: true
