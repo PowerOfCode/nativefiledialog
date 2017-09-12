@@ -1,0 +1,43 @@
+language: cpp
+
+cache:
+  ccache: true
+
+matrix:
+  include:
+  - os: linux
+    services:
+      - docker
+    sudo: required
+    script:
+    - docker run --rm dockcross/windows-x64 > ./dockcross && chmod +x ./dockcross
+    - ./dockcross make -C build/gmake_windows LIBS="-lssp -lole32 -luuid" config=release_x64 -j4 nfd
+    - cd ./build
+    - zip -r nfd-windows.zip lib
+    deploy:
+      file: $TRAVIS_BUILD_DIR/build/nfd-windows.zip
+      provider: releases
+      api_key:
+        secure: LkLYHmpO9kqPl27ZMnT2smBWhyV+ibvNnNKos6U7zuTv7dvvG0WuGw2pxaiXp4zpKZB5FU1mmlhHKu392MmPxM1gvTMqQW5NbOkd9dYax1cjhRxXMwOIG+1eol6gQnUwUzkLhiiEGzaiqs/VpPwEGgUtYNdBkpifWzYRRKlsV2KO+N43eq2uL1R6dAK8ghn+5Y7Y81ybk6Tp9Q879LmL4K7jdjPK8MZJPEtpY78UKVD3rqqLVM89+PzhpBXBSSHKMOeWNsDVu1JGg1PHe6tr0cES1lpQr6Q0eLqAJDyRskvcUMV8JxFG9ZUlD672u3alTGBExI4vNUVFAJbx86gqDbixbEt9epOQT/LJ0eHwIFMs2aZb3COIvLAQt8xe8hiSZ5aAFGAKduXQgNTMMQs48igJiN0lpRrthqryuvTYXSd/W2lqcaF5nkS4T2fMBj90L/zYxrTsrc5/ONVIfwpV7RhKTdcdILa4gQZOUGIQ3F/A8naFFr203LeUphqYAV+Z5itFll5jM5qLPSmLiYHNi8L0PmU+oV15NpdXLPnunJ9+zPkaQykTIL/52RLXpLuGtWHqPkOuIj3IXuDcnhM3j2uPWIh/yaG5IpSHh4bu/QhsvxjayPFZYkJ9aToA1Ma5Ehfq5nV8sTgZJZrbwHy+BrWJqehZAYNN57AGGMoDLFc=
+      skip_cleanup: true
+      on:
+        tags: true
+
+  - os: linux
+    addons:
+      apt:
+        packages:
+        - libgtk-3-dev
+    script:
+      - cd ./build/gmake_linux
+      - make config=release_x64 -j4 nfd
+      - cd ..
+      - zip -r nfd-linux.zip lib
+    deploy:
+      file: $TRAVIS_BUILD_DIR/build/nfd-linux.zip
+      provider: releases
+      api_key:
+        secure: LkLYHmpO9kqPl27ZMnT2smBWhyV+ibvNnNKos6U7zuTv7dvvG0WuGw2pxaiXp4zpKZB5FU1mmlhHKu392MmPxM1gvTMqQW5NbOkd9dYax1cjhRxXMwOIG+1eol6gQnUwUzkLhiiEGzaiqs/VpPwEGgUtYNdBkpifWzYRRKlsV2KO+N43eq2uL1R6dAK8ghn+5Y7Y81ybk6Tp9Q879LmL4K7jdjPK8MZJPEtpY78UKVD3rqqLVM89+PzhpBXBSSHKMOeWNsDVu1JGg1PHe6tr0cES1lpQr6Q0eLqAJDyRskvcUMV8JxFG9ZUlD672u3alTGBExI4vNUVFAJbx86gqDbixbEt9epOQT/LJ0eHwIFMs2aZb3COIvLAQt8xe8hiSZ5aAFGAKduXQgNTMMQs48igJiN0lpRrthqryuvTYXSd/W2lqcaF5nkS4T2fMBj90L/zYxrTsrc5/ONVIfwpV7RhKTdcdILa4gQZOUGIQ3F/A8naFFr203LeUphqYAV+Z5itFll5jM5qLPSmLiYHNi8L0PmU+oV15NpdXLPnunJ9+zPkaQykTIL/52RLXpLuGtWHqPkOuIj3IXuDcnhM3j2uPWIh/yaG5IpSHh4bu/QhsvxjayPFZYkJ9aToA1Ma5Ehfq5nV8sTgZJZrbwHy+BrWJqehZAYNN57AGGMoDLFc=
+      skip_cleanup: true
+      on:
+        tags: true
