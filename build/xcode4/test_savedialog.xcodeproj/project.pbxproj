@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		600DF7C85EB9CACFD69BF52FB5CF7341318BA799E218090F /* libnfd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF42C3AA2F9D637D2AB422FE4526695D9A0C5EC770C77 /* libnfd.a */; };
+		B916497BA183200DD07AF782D5025F7F636CB98FECFC3E4D /* libnfd.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CCF358AEE4AFEA156EE77DFFCA46F147FF3EA9978D8C0055 /* libnfd.dylib */; };
 		D4E5D913B762408A71DC6C0248A4EFC541918B2261D3ECA /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBBC4EDA893A8412D5925C05D69D7A449728CBB74CBC7A52 /* AppKit.framework */; };
 		ED4CE49BDAA66E6A01B51B5806AC75838E21E50DD9FA526 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71D6295A4B74DEAEC0EF210A2FBBE6E04EE73ACBB3A914EE /* Foundation.framework */; };
 		F9C6A671D68362BE99B0B0EE2DE8D5B012C84766DFF6F0FE /* test_savedialog.c in Sources */ = {isa = PBXBuildFile; fileRef = 6753EC0B8B1CE4062EE1F13FBD162EB8AFD3132736F56A46 /* test_savedialog.c */; };
@@ -16,24 +16,24 @@
 /* Begin PBXContainerItemProxy section */
 		F815FDB657D02ABAD15C3BB351362C2C5DA27B0844D188FA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9C4B208142B285D2A252A5750767DC44B0DF2675BBD68412 /* nfd.xcodeproj */;
+			containerPortal = 2E0E13052BFEF34AE103765C0AA18EBC5D224233BF83918A /* nfd.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = BEE4B8BD4E280AA796E0E38E7CCE5E9967D0FD53D60FB8E7;
-			remoteInfo = libnfd.a;
+			remoteGlobalIDString = 8A484AFA3A448DFA712C2743AF78AECA25A85DCAED95C3A;
+			remoteInfo = libnfd.dylib;
 		};
 		FA883EECAA0A9D53D3CE7CE9A3709EC56014BC3E970BFB93 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9C4B208142B285D2A252A5750767DC44B0DF2675BBD68412 /* nfd.xcodeproj */;
+			containerPortal = 2E0E13052BFEF34AE103765C0AA18EBC5D224233BF83918A /* nfd.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = EE83A092ED35A9ADD60763CF9188475F12A9D132A3C08FED;
-			remoteInfo = libnfd.a;
+			remoteGlobalIDString = B69DEAD2D5558EA0749489987843B552EDA63A2F076994E0;
+			remoteInfo = libnfd.dylib;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E0E13052BFEF34AE103765C0AA18EBC5D224233BF83918A /* libnfd.dylib */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "nfd.xcodeproj"; path = nfd.xcodeproj; sourceTree = SOURCE_ROOT; };
 		6753EC0B8B1CE4062EE1F13FBD162EB8AFD3132736F56A46 /* test_savedialog.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = test_savedialog.c; path = ../../test/test_savedialog.c; sourceTree = "<group>"; };
 		71D6295A4B74DEAEC0EF210A2FBBE6E04EE73ACBB3A914EE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		9C4B208142B285D2A252A5750767DC44B0DF2675BBD68412 /* libnfd.a */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "nfd.xcodeproj"; path = nfd.xcodeproj; sourceTree = SOURCE_ROOT; };
 		AC2BFB5434DE87E7AE39F8F05B04B799C34822E3C20BAE27 /* test_savedialog */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = test_savedialog; path = test_savedialog; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBBC4EDA893A8412D5925C05D69D7A449728CBB74CBC7A52 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -45,7 +45,7 @@
 			files = (
 				ED4CE49BDAA66E6A01B51B5806AC75838E21E50DD9FA526 /* Foundation.framework in Frameworks */,
 				D4E5D913B762408A71DC6C0248A4EFC541918B2261D3ECA /* AppKit.framework in Frameworks */,
-				600DF7C85EB9CACFD69BF52FB5CF7341318BA799E218090F /* libnfd.a in Frameworks */,
+				B916497BA183200DD07AF782D5025F7F636CB98FECFC3E4D /* libnfd.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,7 +75,7 @@
 		C1B317315D4848BAD7CC7DEB745AE3ECDC0CAE626476DEFA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EDF42C3AA2F9D637D2AB422FE4526695D9A0C5EC770C77 /* libnfd.a */,
+				CCF358AEE4AFEA156EE77DFFCA46F147FF3EA9978D8C0055 /* libnfd.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -91,8 +91,8 @@
 		DE2FDC7F9D968EAA8E13545B920D05DCBA1800CBE0E0A4EA /* Projects */ = {
 			isa = PBXGroup;
 			children = (
-				9C4B208142B285D2A252A5750767DC44B0DF2675BBD68412 /* nfd.xcodeproj */,
-				9C4B208142B285D2A252A5750767DC44B0DF2675BBD68412 /* nfd.xcodeproj */,
+				2E0E13052BFEF34AE103765C0AA18EBC5D224233BF83918A /* nfd.xcodeproj */,
+				2E0E13052BFEF34AE103765C0AA18EBC5D224233BF83918A /* nfd.xcodeproj */,
 			);
 			name = Projects;
 			sourceTree = "<group>";
@@ -133,11 +133,11 @@
 			projectReferences = (
 				{
 					ProductGroup = C1B317315D4848BAD7CC7DEB745AE3ECDC0CAE626476DEFA /* Products */;
-					ProjectRef = 9C4B208142B285D2A252A5750767DC44B0DF2675BBD68412 /* nfd.xcodeproj */;
+					ProjectRef = 2E0E13052BFEF34AE103765C0AA18EBC5D224233BF83918A /* nfd.xcodeproj */;
 				},
 				{
 					ProductGroup = C1B317315D4848BAD7CC7DEB745AE3ECDC0CAE626476DEFA /* Products */;
-					ProjectRef = 9C4B208142B285D2A252A5750767DC44B0DF2675BBD68412 /* nfd.xcodeproj */;
+					ProjectRef = 2E0E13052BFEF34AE103765C0AA18EBC5D224233BF83918A /* nfd.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -148,10 +148,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		EDF42C3AA2F9D637D2AB422FE4526695D9A0C5EC770C77 /* libnfd.a */ = {
+		CCF358AEE4AFEA156EE77DFFCA46F147FF3EA9978D8C0055 /* libnfd.dylib */ = {
 			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libnfd.a;
+			fileType = "compiled.mach-o.dylib";
+			path = libnfd.dylib;
 			remoteRef = F815FDB657D02ABAD15C3BB351362C2C5DA27B0844D188FA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -181,7 +181,7 @@
 /* Begin PBXTargetDependency section */
 		C1C611684B0085C3D7DF7822621320F5DC1FA899522F1C03 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = libnfd.a;
+			name = libnfd.dylib;
 			targetProxy = FA883EECAA0A9D53D3CE7CE9A3709EC56014BC3E970BFB93 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
